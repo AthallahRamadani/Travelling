@@ -10,13 +10,8 @@ import com.travelling.travelling.utils.response.CustomPage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,15 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public CustomPage<UserEntity> getAll(Pageable pageable, String name) {
         Page<UserEntity> userPage = userRepository.findAllUser(pageable);
-
-        // stream untuk sort nama username ascending/default
-        List<UserEntity> sortedUsers = userPage.getContent().stream()
-                .sorted(Comparator.comparing(UserEntity::getUsername))
-                .collect(Collectors.toList());
-
-        Page<UserEntity> sortedPage = new PageImpl<>(sortedUsers, pageable, userPage.getTotalElements());
-
-        return new CustomPage<>(sortedPage);
+        return new CustomPage<>(userPage);
     }
 
     @Override

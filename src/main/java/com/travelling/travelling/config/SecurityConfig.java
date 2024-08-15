@@ -44,7 +44,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/accommodations").authenticated()
+                        .requestMatchers("/api/v1/users/**").authenticated()
+                        .requestMatchers("/api/v1/accommodations/**").authenticated()
 
                         .requestMatchers(HttpMethod.POST, "/api/v1/order_accommodations").hasAuthority("ROLE_USER")
                         .requestMatchers(HttpMethod.POST, "/api/v1/order_accommodations").hasAuthority("ROLE_ADMIN")

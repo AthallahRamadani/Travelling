@@ -4,7 +4,6 @@ import com.travelling.travelling.model.UserEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,12 +13,11 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long>, JpaSpecificationExecutor<UserEntity> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Modifying
     @Query(value = "INSERT INTO users (username, email, password, role) VALUES (?1, ?2, ?3, ?4)", nativeQuery = true)
     @Transactional
     void saveUser(String username, String email, String password, String role);
-
 
     @Query(
             value = "SELECT * FROM Users ORDER BY id \n-- #pageable\n",
