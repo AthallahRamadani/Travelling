@@ -1,10 +1,9 @@
 package com.travelling.travelling.utils.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.travelling.travelling.model.Role;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -13,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class UserDTO {
     @NotBlank
-    private String userName;
+    private String username;
 
     @NotBlank
     private String email;
@@ -22,6 +21,6 @@ public class UserDTO {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // supaya tidak di-return di response API
     private String password;
 
-    private MultipartFile profile_picture;
+    private Role role;
 
 }

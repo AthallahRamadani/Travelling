@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ErrorController {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        String message = e.getAllErrors().get(0).getDefaultMessage();
+        String message = e.getAllErrors().getFirst().getDefaultMessage();
         return Response.renderJSON(null, message, HttpStatus.BAD_REQUEST);
     }
 

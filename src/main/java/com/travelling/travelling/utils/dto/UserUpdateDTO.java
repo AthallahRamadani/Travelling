@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 public class UserUpdateDTO {
     @NotBlank
-    private String name;
+    private String username;
 
     @NotBlank
     private String email;
@@ -20,6 +20,4 @@ public class UserUpdateDTO {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // supaya tidak di-return di response API
     private String password;
 
-    @NotBlank
-    private String phone_number;
 }
