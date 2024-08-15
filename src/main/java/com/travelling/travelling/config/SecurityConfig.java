@@ -46,11 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/users/**").authenticated()
                         .requestMatchers("/api/v1/accommodations/**").authenticated()
-
-                        .requestMatchers(HttpMethod.POST, "/api/v1/order_accommodations").hasAuthority("ROLE_USER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/order_accommodations").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/order_accommodations").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/api/v1/order_accommodations/{id}").access(userAuthorizationManager())
+                        .requestMatchers("/api/v1/order_accommodations/**").authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

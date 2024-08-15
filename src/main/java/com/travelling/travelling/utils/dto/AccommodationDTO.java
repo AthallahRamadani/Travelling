@@ -3,8 +3,6 @@ package com.travelling.travelling.utils.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import java.util.Map;
-
 @Data
 @Getter
 @Setter
